@@ -95,6 +95,7 @@ const createWindow = async () => {
   });
 
   mainWindow.on('closed', () => {
+    // 释放内存
     mainWindow = null;
   });
 
@@ -135,3 +136,35 @@ app
     });
   })
   .catch(console.log);
+
+app.on('window-all-closed', () => {
+  console.log('window-all-closed----->');
+});
+
+app.on('before-quit', () => {
+  console.log('before-quit----->');
+});
+
+app.on('will-quit', () => {
+  console.log('will-quit----->');
+});
+
+app.on('quit', () => {
+  console.log('quit----->');
+});
+
+app.on('activate', () => {
+  console.log('activate----->');
+});
+
+app.on('browser-window-blur', () => {
+  console.log('browser-window-blur----->');
+});
+
+app.on('browser-window-focus', () => {
+  console.log('browser-window-focus----->');
+});
+
+app.on('browser-window-created', () => {
+  console.log('browser-window-created----->');
+});
