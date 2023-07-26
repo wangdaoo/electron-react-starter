@@ -19,6 +19,7 @@ export default class MenuBuilder {
   }
 
   buildMenu(): Menu {
+    console.log('process.env', process.env);
     if (
       process.env.NODE_ENV === 'development' ||
       process.env.DEBUG_PROD === 'true'
@@ -54,7 +55,7 @@ export default class MenuBuilder {
 
   buildDarwinTemplate(): MenuItemConstructorOptions[] {
     const subMenuAbout: DarwinMenuItemConstructorOptions = {
-      label: 'Electron',
+      label: 'ElectronStarter',
       submenu: [
         {
           label: 'About ElectronReact',

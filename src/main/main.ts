@@ -70,10 +70,19 @@ const createWindow = async () => {
   };
 
   mainWindow = new BrowserWindow({
-    show: false,
+    show: false, // 是否显示窗口
+    // x: 0, // 窗口的横坐标
+    // y: 0, // 窗口的纵坐标
     width: 1024,
     height: 728,
+    minWidth: 1024,
+    minHeight: 728,
+    resizable: true, // 窗口是否可以改变尺寸
     icon: getAssetPath('icon.png'),
+    title: 'Electron React Starter',
+    // frame: false, // 是否创建frameless窗口
+    // transparent: true, // 是否是透明窗口（仅macOS）
+    // autoHideMenuBar: false, // 是否隐藏菜单栏
     webPreferences: {
       preload: app.isPackaged
         ? path.join(__dirname, 'preload.js')

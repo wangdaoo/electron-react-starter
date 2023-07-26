@@ -7,6 +7,10 @@ function Hello() {
     <div>
       <div className="Hello">
         <img width="200" alt="icon" src={icon} />
+        {/* <video src="https://www.runoob.com/try/demo_source/movie.mp4" controls>
+          您的浏览器不支持 video 标签。
+          <track kind="captions" src="subtitles_en.vtt" label="English" />
+        </video> */}
       </div>
       <h1>electron-react-boilerplate</h1>
       <div className="Hello">
@@ -34,6 +38,12 @@ function Hello() {
             Donate
           </button>
         </a>
+        <button type="button">
+          <span role="img" aria-label="folded hands">
+            🖼️
+          </span>
+          Open New Window
+        </button>
       </div>
     </div>
   );
