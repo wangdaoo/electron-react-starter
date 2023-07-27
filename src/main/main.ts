@@ -84,6 +84,7 @@ const createWindow = async () => {
     // transparent: true, // 是否是透明窗口（仅macOS）
     // autoHideMenuBar: false, // 是否隐藏菜单栏
     webPreferences: {
+      // webSecurity: false,
       preload: app.isPackaged
         ? path.join(__dirname, 'preload.js')
         : path.join(__dirname, '../../.erb/dll/preload.js'),
@@ -91,6 +92,9 @@ const createWindow = async () => {
   });
 
   mainWindow.loadURL(resolveHtmlPath('index.html'));
+
+  const contents = mainWindow.webContents;
+  console.log('contents', contents);
 
   mainWindow.on('ready-to-show', () => {
     if (!mainWindow) {
@@ -101,6 +105,15 @@ const createWindow = async () => {
     } else {
       mainWindow.show();
     }
+
+    // dialog.showMessageBox({
+    //   type: 'info',
+    //   title: '信息',
+    //   message: '欢迎使用electron',
+    //   buttons: ['确定'],
+    //   // checkboxLabel: '不再提醒',
+    //   // checkboxChecked: false,
+    // });
   });
 
   mainWindow.on('closed', () => {
