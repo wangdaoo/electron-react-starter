@@ -106,6 +106,12 @@ const createWindow = async () => {
       mainWindow.show();
     }
 
+    // const notification = new Notification({
+    //   title: '通知',
+    //   body: '欢迎使用electron',
+    // });
+    // notification.show();
+
     // dialog.showMessageBox({
     //   type: 'info',
     //   title: '信息',

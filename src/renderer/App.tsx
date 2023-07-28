@@ -1,8 +1,22 @@
-import { MemoryRouter as Router, Routes, Route } from 'react-router-dom';
+import {
+  MemoryRouter as Router,
+  Routes,
+  Route,
+  useNavigate,
+} from 'react-router-dom';
+import FramePage from './components/FrameView';
 import icon from '../../assets/icon.svg';
 import './App.css';
 
 function Hello() {
+  const navigate = useNavigate();
+
+  const goFramePage = () => {
+    console.log('goFramePage');
+    // 通过路由跳转至 /frame
+    navigate('/frame');
+  };
+
   return (
     <div>
       <div className="Hello">
@@ -44,6 +58,9 @@ function Hello() {
           </span>
           Open New Window
         </button>
+        <button type="button" onClick={goFramePage}>
+          Open Frame
+        </button>
       </div>
     </div>
   );
@@ -54,6 +71,7 @@ export default function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Hello />} />
+        <Route path="/frame" element={<FramePage />} />
       </Routes>
     </Router>
   );
