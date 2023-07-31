@@ -3,6 +3,10 @@ import detectPort from 'detect-port';
 
 const port = process.env.PORT || '1212';
 
+/**
+ * 检查端口是否被占用
+ * @param {string} port 端口号
+ */
 detectPort(port, (err, availablePort) => {
   if (port !== String(availablePort)) {
     throw new Error(

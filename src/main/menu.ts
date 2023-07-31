@@ -18,8 +18,19 @@ export default class MenuBuilder {
     this.mainWindow = mainWindow;
   }
 
+  /**
+   * Build the menu for the application
+   * @description 该方法用于构建应用程序的菜单
+   * @returns {Menu} The menu for the application
+   * 判断逻辑：
+   * 1. 如果是开发环境，或者是调试模式，那么就会调用 setupDevelopmentEnvironment 方法
+   * 2. 如果是 darwin 平台，那么就会调用 buildDarwinTemplate 方法
+   * 3. 如果不是 darwin 平台，那么就会调用 buildDefaultTemplate 方法
+   * 4. 调用 Menu.buildFromTemplate 方法，传入上面的模板，生成菜单
+   * 5. 调用 Menu.setApplicationMenu 方法，将菜单设置到应用程序中
+   * 6. 最后返回菜单
+   */
   buildMenu(): Menu {
-    console.log('process.env', process.env);
     if (
       process.env.NODE_ENV === 'development' ||
       process.env.DEBUG_PROD === 'true'
@@ -28,7 +39,7 @@ export default class MenuBuilder {
     }
 
     const template =
-      process.platform === 'darwin'
+      process.platform === 'darwin' // darwin 是 macOS 的平台名称
         ? this.buildDarwinTemplate()
         : this.buildDefaultTemplate();
 
@@ -53,6 +64,7 @@ export default class MenuBuilder {
     });
   }
 
+  // darwin 平台的菜单模板 (macOS)
   buildDarwinTemplate(): MenuItemConstructorOptions[] {
     const subMenuAbout: DarwinMenuItemConstructorOptions = {
       label: 'ElectronStarter',
@@ -193,6 +205,7 @@ export default class MenuBuilder {
     return [subMenuAbout, subMenuEdit, subMenuView, subMenuWindow, subMenuHelp];
   }
 
+  // 默认平台的菜单模板 (Windows/Linux)
   buildDefaultTemplate() {
     const templateDefault = [
       {
@@ -208,6 +221,10 @@ export default class MenuBuilder {
             click: () => {
               this.mainWindow.close();
             },
+          },
+          {
+            label: '&Save',
+            accelerator: 'Ctrl+S',
           },
         ],
       },
