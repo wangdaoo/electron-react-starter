@@ -49,6 +49,9 @@ export default class MenuBuilder {
     return menu;
   }
 
+  /**
+   * @description 该方法用于设置开发环境的右键菜单
+   */
   setupDevelopmentEnvironment(): void {
     this.mainWindow.webContents.on('context-menu', (_, props) => {
       const { x, y } = props;
@@ -58,6 +61,18 @@ export default class MenuBuilder {
           label: 'Inspect element',
           click: () => {
             this.mainWindow.webContents.inspectElement(x, y);
+          },
+        },
+        {
+          label: 'Reload',
+          click: () => {
+            this.mainWindow.webContents.reload();
+          },
+        },
+        {
+          label: 'Toggle Developer Tools',
+          click: () => {
+            this.mainWindow.webContents.toggleDevTools();
           },
         },
       ]).popup({ window: this.mainWindow });

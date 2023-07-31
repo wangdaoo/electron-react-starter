@@ -7,7 +7,12 @@ root.render(<App />);
 
 // calling IPC exposed from preload script
 window.electron.ipcRenderer.once('ipc-example', (arg) => {
-  // eslint-disable-next-line no-console
-  console.log(arg);
+  console.log(
+    `%c%s`,
+    'color: #4CAF50; font-weight: bold',
+    'ipc-example ↓ ONCE'
+  );
+  console.log('arg', arg);
 });
+
 window.electron.ipcRenderer.sendMessage('ipc-example', ['ping']);
