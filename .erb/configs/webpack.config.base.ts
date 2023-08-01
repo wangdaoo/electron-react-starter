@@ -10,7 +10,7 @@ import { dependencies as externals } from '../../release/app/package.json';
 const configuration: webpack.Configuration = {
   externals: [...Object.keys(externals || {})],
 
-  stats: 'errors-only',
+  stats: 'errors-only', // 只在发生错误或有新的编译时输出
 
   module: {
     rules: [
@@ -21,7 +21,7 @@ const configuration: webpack.Configuration = {
           loader: 'ts-loader',
           options: {
             // Remove this line to enable type checking in webpack builds
-            transpileOnly: true,
+            transpileOnly: true, // 只进行转译，不进行类型检查
             compilerOptions: {
               module: 'esnext',
             },
@@ -50,6 +50,7 @@ const configuration: webpack.Configuration = {
   },
 
   plugins: [
+    // 用于在编译时期创建全局变量
     new webpack.EnvironmentPlugin({
       NODE_ENV: 'production',
     }),

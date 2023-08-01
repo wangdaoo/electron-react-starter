@@ -65,7 +65,7 @@ const configuration: webpack.Configuration = {
     __filename: false,
   },
 
-  watch: true,
+  watch: true, // 开启监听模式
 };
 
 export default merge(baseConfig, configuration);

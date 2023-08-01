@@ -44,6 +44,7 @@ const configuration: webpack.Configuration = {
   },
 
   plugins: [
+    // 打包分析
     new BundleAnalyzerPlugin({
       analyzerMode: process.env.ANALYZE === 'true' ? 'server' : 'disabled',
       analyzerPort: 8888,
@@ -58,6 +59,7 @@ const configuration: webpack.Configuration = {
      * NODE_ENV should be production so that modules do not perform certain
      * development checks
      */
+    // 用于在编译时期创建全局变量
     new webpack.EnvironmentPlugin({
       NODE_ENV: 'production',
       DEBUG_PROD: false,
@@ -74,6 +76,8 @@ const configuration: webpack.Configuration = {
    * If you run the bundle in node.js it falls back to these values of node.js.
    * https://github.com/webpack/webpack/issues/2010
    */
+  // 禁用webpack对__dirname和__filename的处理
+  // 代码中不能使用__dirname和__filename，可以提高代码安全性，避免潜在的安全隐患
   node: {
     __dirname: false,
     __filename: false,

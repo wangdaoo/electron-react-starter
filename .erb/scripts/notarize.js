@@ -1,6 +1,9 @@
 const { notarize } = require('@electron/notarize');
 const { build } = require('../../package.json');
 
+/**
+ * macOS 平台打包后，自动提交到苹果服务器进行签名
+ */
 exports.default = async function notarizeMacos(context) {
   const { electronPlatformName, appOutDir } = context;
   if (electronPlatformName !== 'darwin') {
