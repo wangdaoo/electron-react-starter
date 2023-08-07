@@ -183,15 +183,16 @@ const configuration: webpack.Configuration = {
     setupMiddlewares(middlewares) {
       console.log('Starting preload.js builder...');
       const preloadProcess = spawn('npm', ['run', 'start:preload'], {
-        shell: true,
-        stdio: 'inherit',
+        shell: true, // 可以使用shell命令
+        stdio: 'inherit', // 父进程和子进程共享stdio
       })
-        .on('close', (code: number) => process.exit(code!))
-        .on('error', (spawnError) => console.error(spawnError));
+        .on('close', (code: number) => process.exit(code!)) // 子进程关闭时，父进程也关闭
+        .on('error', (spawnError) => console.error(spawnError)); // 子进程出错时，父进程也关闭
 
       console.log('Starting Main Process...');
       let args = ['run', 'start:main'];
       if (process.env.MAIN_ARGS) {
+        // 参数合并
         args = args.concat(
           ['--', ...process.env.MAIN_ARGS.matchAll(/"[^"]+"|[^\s"]+/g)].flat()
         );
