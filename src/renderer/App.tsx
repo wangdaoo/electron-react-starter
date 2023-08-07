@@ -7,6 +7,7 @@ import {
 import FramePage from './components/FrameView';
 import icon from '../../assets/icon.svg';
 import './App.css';
+import { Channels } from '../main/preload';
 
 function Hello() {
   const navigate = useNavigate();
@@ -15,6 +16,17 @@ function Hello() {
     console.log('goFramePage');
     // 通过路由跳转至 /frame
     navigate('/frame');
+  };
+
+  const channel: Channels = 'ipc-example';
+
+  const sendMainMessage = () => {
+    console.log('sendMainMessage');
+    // 通过路由跳转至 /frame
+    window.electron.ipcRenderer.sendMessage(
+      channel,
+      'Hello, 这是来自渲染进程的消息'
+    );
   };
 
   return (
@@ -60,6 +72,9 @@ function Hello() {
         </button>
         <button type="button" onClick={goFramePage}>
           Open Frame
+        </button>
+        <button type="button" onClick={sendMainMessage}>
+          往主进程发送消息
         </button>
       </div>
     </div>

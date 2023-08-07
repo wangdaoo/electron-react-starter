@@ -75,6 +75,13 @@ export default class MenuBuilder {
             this.mainWindow.webContents.toggleDevTools();
           },
         },
+        {
+          // 播放音效
+          label: 'Play Shell Beep',
+          click() {
+            shell.beep();
+          },
+        },
       ]).popup({ window: this.mainWindow });
     });
   }
