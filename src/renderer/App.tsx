@@ -4,8 +4,8 @@ import {
   Route,
   useNavigate,
 } from 'react-router-dom';
-import FramePage from './components/FrameView';
-import icon from '../../assets/icon.svg';
+import icon from '@assets/icon.svg';
+import FramePage from '@components/FrameView';
 import './App.css';
 import { Channels } from '../main/preload';
 
