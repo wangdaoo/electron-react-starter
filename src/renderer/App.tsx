@@ -6,8 +6,9 @@ import {
 } from 'react-router-dom';
 import icon from '@assets/icon.svg';
 import FramePage from '@components/FrameView';
-import './App.css';
 import { Channels } from '../main/preload';
+import './App.css';
+import './input.css';
 
 function Hello() {
   const navigate = useNavigate();
@@ -31,6 +32,7 @@ function Hello() {
 
   return (
     <div>
+      <div className="text-3xl font-bold">Hello</div>
       <div className="Hello">
         <img width="200" alt="icon" src={icon} />
         {/* <video src="https://www.runoob.com/try/demo_source/movie.mp4" controls>
