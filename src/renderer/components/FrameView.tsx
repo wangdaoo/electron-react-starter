@@ -1,21 +1,15 @@
-import { useNavigate } from 'react-router-dom';
+import BackButton from '@components/BackButton';
 
 // 测试 Iframe 嵌入
 
 export default function FramePage() {
-  const navigate = useNavigate();
-
-  const back = () => {
-    // 返回
-    navigate(-1);
-  };
-
   return (
     <>
-      <button type="button" onClick={back}>
+      {/* <button type="button" onClick={back}>
         Back
-      </button>
-      <div style={{ width: '800px', height: '300px' }}>
+      </button> */}
+      <BackButton />
+      <div style={{ width: '1000px', height: '800px' }}>
         <iframe
           src="https://www.runoob.com"
           title="Frame"

@@ -51,6 +51,7 @@ const configuration: webpack.Configuration = {
       '@common': `${webpackPaths.srcPath}/common`,
       '@assets': `${webpackPaths.rootPath}/assets`,
       '@components': `${webpackPaths.srcRendererPath}/components`,
+      '@hooks': `${webpackPaths.srcRendererPath}/hooks`,
     },
   },
 

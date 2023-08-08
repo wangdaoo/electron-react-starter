@@ -20,6 +20,7 @@
       "@assets/*": ["./assets/*"],
       "@common/*": ["./common/*"],
       "@components/*": ["./renderer/components/*"],
+      "@hooks/*": ["./renderer/hooks/*"],
     },
   },
   "exclude": ["test", "release/build", "release/app/dist", ".erb/dll"]

@@ -71,7 +71,7 @@ function Hello() {
           Open New Window
         </button>
         <button type="button" onClick={goFramePage}>
-          Open Frame
+          Open Iframe
         </button>
         <button type="button" onClick={sendMainMessage}>
           往主进程发送消息
