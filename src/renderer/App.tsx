@@ -8,7 +8,6 @@ import icon from '@assets/icon.svg';
 import FramePage from '@components/FrameView';
 import { Channels } from '../main/preload';
 import './App.css';
-import './input.css';
 
 function Hello() {
   const navigate = useNavigate();
@@ -32,7 +31,13 @@ function Hello() {
 
   return (
     <div>
-      <div className="text-3xl font-bold">Hello</div>
+      <div className="bg-gray-100 p-4">
+        <h1 className="text-3xl font-bold mb-4">Hello World</h1>
+        <p className="text-red-600">ppppp111pp</p>
+        <p className="text-gray-700">
+          This is a Tailwind CSS example in Electron React Boilerplate
+        </p>
+      </div>
       <div className="Hello">
         <img width="200" alt="icon" src={icon} />
         {/* <video src="https://www.runoob.com/try/demo_source/movie.mp4" controls>

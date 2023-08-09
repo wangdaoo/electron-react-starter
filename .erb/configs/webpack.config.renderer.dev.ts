@@ -74,21 +74,14 @@ const configuration: webpack.Configuration = {
               importLoaders: 1,
             },
           },
-          {
-            loader: 'postcss-loader',
-            options: {
-              postcssOptions: {
-                plugins: [require('tailwindcss'), require('autoprefixer')],
-              },
-            },
-          },
+          'postcss-loader',
           'sass-loader',
         ],
         include: /\.module\.s?(c|a)ss$/,
       },
       {
         test: /\.s?css$/,
-        use: ['style-loader', 'css-loader', 'sass-loader'],
+        use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader'],
         exclude: /\.module\.s?(c|a)ss$/,
       },
       // Fonts
@@ -159,7 +152,7 @@ const configuration: webpack.Configuration = {
 
     new HtmlWebpackPlugin({
       filename: path.join('index.html'),
-      template: path.join(webpackPaths.srcRendererPath, 'index.ejs'),
+      template: path.join(webpackPaths.srcRendererPath, 'index.html'),
       minify: {
         collapseWhitespace: true,
         removeAttributeQuotes: true,
