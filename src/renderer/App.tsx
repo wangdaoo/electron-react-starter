@@ -17,8 +17,6 @@ function Home() {
   const navigate = useNavigate();
 
   const goFramePage = () => {
-    console.log('goFramePage');
-    // 通过路由跳转至 /frame
     navigate('/frame');
   };
 
@@ -38,7 +36,13 @@ function Home() {
       <div className="flex justify-center">
         <img width="200" className="mt-10" alt="icon" src={icon} />
       </div>
-      <h1>electron-react-boilerplate</h1>
+      <blockquote className="text-2xl font-semibold italic text-center text-slate-900">
+        <span className="before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-pink-500 relative inline-block">
+          <span className="relative text-white">
+            electron-react-boilerplate
+          </span>
+        </span>
+      </blockquote>
       <div className="flex">
         <button
           className={[buttonClass.base, buttonClass.marginRight].join(' ')}
